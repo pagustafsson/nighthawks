@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nighthawks — after Edward Hopper</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+    <canvas id="guides"></canvas>
+    <div id="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <header id="title">
+      <h1>Nighthawks</h1>
+      <p>after Edward Hopper, 1942</p>
+    </header>
+
+    <nav id="views">
+      <button data-view="hero" class="on" title="Key 1">Hopper's angle</button>
+      <button data-view="block" title="Key 2">The block</button>
+      <button data-view="stranger" title="Key 3">Lonely stranger</button>
+      <button data-view="street" title="Key 4">The street</button>
+      <span class="sep"></span>
+      <button id="btn-frame" title="Key F">Painting crop</button>
+    </nav>
+
+    <div id="dock">
+      <footer id="help">
+        <span><b>Drag</b> look around</span>
+        <span><b>W A S D</b> fly</span>
+        <span><b>Q / E</b> down / up</span>
+        <span><b>Scroll</b> forward / back</span>
+        <span><b>Z / X</b> lens</span>
+        <span><b>H</b> hide UI</span>
+      </footer>
+      <p id="credit">
+        <a class="follow" href="https://x.com/intent/follow?screen_name=pagustafsson" target="_blank" rel="noopener" aria-label="Follow @pagustafsson on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@pagustafsson
+        </a>
+        <button id="btn-copy" class="follow" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Copy link</span>
+        </button>
+      </p>
+    </div>
+
+    <div id="loading">Switching on the lights…</div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

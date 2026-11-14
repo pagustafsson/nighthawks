@@ -1,0 +1,118 @@
+:root {
+  --ink: #e9e4cf;
+  --dim: rgba(233, 228, 207, 0.55);
+  --line: rgba(233, 228, 207, 0.16);
+  --panel: rgba(8, 12, 13, 0.55);
+  --accent: #e3c463;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: #05080a; color: var(--ink);
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+#scene.dragging { cursor: grabbing; }
+#guides { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; display: none; }
+
+#frame { position: fixed; inset: 0; pointer-events: none; opacity: 0; transition: opacity .35s ease; }
+#frame.on { opacity: 1; }
+#frame i { position: absolute; background: rgba(3, 5, 6, 0.86); }
+
+#title { position: fixed; left: 28px; top: 22px; pointer-events: none; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+#title h1 {
+  margin: 0; font-family: "Rockwell", "American Typewriter", Georgia, serif;
+  font-weight: 700; font-size: 22px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+}
+#title p { margin: 4px 0 0; font-size: 12px; letter-spacing: .08em; color: var(--dim); }
+
+#views {
+  position: fixed; right: 22px; top: 20px; display: flex; gap: 6px; align-items: center;
+  padding: 6px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+#views button {
+  appearance: none; border: 0; background: transparent; color: var(--dim);
+  font: inherit; font-size: 12px; letter-spacing: .04em; padding: 7px 13px; border-radius: 999px; cursor: pointer;
+  transition: color .2s, background .2s;
+}
+#views button:hover { color: var(--ink); background: rgba(233,228,207,.08); }
+#views button.on { color: #10140f; background: var(--accent); }
+#views .sep { width: 1px; height: 18px; background: var(--line); margin: 0 2px; }
+
+/* nederkanten: genvägarna och raden om vem som gjort sidan */
+#dock {
+  position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  width: max-content; max-width: calc(100% - 32px);
+  transition: opacity .6s ease;
+}
+#help {
+  display: flex; gap: 18px; padding: 8px 16px; white-space: nowrap; max-width: 100%;
+  font-size: 11.5px; letter-spacing: .03em; color: var(--dim);
+  border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: opacity .6s ease;
+}
+#help b { color: var(--ink); font-weight: 600; margin-right: 5px; }
+#credit {
+  margin: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px;
+  font-size: 11.5px; letter-spacing: .03em; color: rgba(233, 228, 207, 0.74); text-align: center;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .75);
+}
+#credit a { color: var(--ink); text-decoration: none; transition: color .2s, border-color .2s; }
+#credit a:hover { color: var(--accent); }
+#credit a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+#credit .follow {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px;
+  font-weight: 600; text-shadow: none;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+#credit .follow:hover { border-color: var(--accent); }
+#credit button.follow { appearance: none; font: inherit; font-weight: 600; letter-spacing: inherit; color: var(--ink); cursor: pointer; transition: color .2s, border-color .2s; }
+#credit button.follow:hover { color: var(--accent); }
+#credit button.follow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* om urklipp nekas visas länken markerad, för att kopieras för hand */
+#credit .linkbox {
+  font: inherit; width: min(330px, 80vw); padding: 4px 11px; text-align: center;
+  color: var(--ink); border: 1px solid var(--accent); border-radius: 999px; background: var(--panel);
+}
+#credit .follow svg { width: 11px; height: 11px; fill: currentColor; }
+body.quiet #dock, body.quiet #title, body.quiet #views { opacity: 0; pointer-events: none; }
+#title, #views { transition: opacity .6s ease; }
+
+#loading {
+  position: fixed; inset: 0; display: grid; place-items: center; background: #05080a;
+  font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim);
+  transition: opacity .9s ease; z-index: 10;
+}
+#loading.done { opacity: 0; pointer-events: none; }
+
+@media (max-width: 900px) {
+  #help { gap: 12px; }
+  #help span:nth-child(n+6) { display: none; }
+  #views button { padding: 6px 9px; font-size: 11px; }
+  #title h1 { font-size: 17px; }
+}
+/* smala fönster: vyknapparna lägger sig som en rad under rubriken */
+@media (max-width: 720px) {
+  #title { left: 16px; right: 16px; top: 14px; text-align: center; }
+  #title h1 { font-size: 15px; padding-left: .22em; } /* väger upp teckenavståndet efter sista bokstaven */
+  #title p { font-size: 11px; }
+  #views {
+    left: 16px; right: 16px; top: 62px;
+    flex-wrap: wrap; justify-content: center; gap: 6px;
+    /* ingen gemensam platta på smal skärm – varje knapp bär sin egen bakgrund */
+    padding: 0; border: 0; border-radius: 0; background: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  #views button {
+    white-space: nowrap; border: 1px solid var(--line); background: var(--panel);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  #views button.on { border-color: var(--accent); }
+  #views .sep { display: none; }
+  #help span:nth-child(n+3) { display: none; }
+}
