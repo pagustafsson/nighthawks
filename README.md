@@ -46,3 +46,8 @@ Then open the address Vite prints. `npm run build` writes a static site to `dist
   `public/models/README.md` for what was changed.
 - An homage to Edward Hopper's *Nighthawks* (1942, Art Institute of Chicago).
   This repository contains no reproduction of the painting itself.
+
+## License
+
+[MIT](LICENSE) © 2026 pagustafsson. The Rocketbox figures keep their own MIT
+licence from Microsoft (`public/models/LICENSE-Rocketbox.md`).
