@@ -39,6 +39,9 @@ Then open the address Vite prints. `npm run build` writes a static site to `dist
 - `public/models/` – the rigged figures (see below)
 - `tools/rocketbox/` – scripts that convert the figures
 
+If you like it, here is a way to show your appreciation:
+[buy me a coffee](https://buymeacoffee.com/pagustafsson) ☕
+
 ## Credits
 
 - Figures: [Microsoft Rocketbox](https://github.com/microsoft/Microsoft-Rocketbox),

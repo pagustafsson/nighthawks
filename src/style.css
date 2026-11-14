@@ -80,6 +80,7 @@ html, body {
   color: var(--ink); border: 1px solid var(--accent); border-radius: 999px; background: var(--panel);
 }
 #credit .follow svg { width: 11px; height: 11px; fill: currentColor; }
+#credit .narrow { display: none; }
 body.quiet #dock, body.quiet #title, body.quiet #views { opacity: 0; pointer-events: none; }
 #title, #views { transition: opacity .6s ease; }
 
@@ -115,4 +116,6 @@ body.quiet #dock, body.quiet #title, body.quiet #views { opacity: 0; pointer-eve
   #views button.on { border-color: var(--accent); }
   #views .sep { display: none; }
   #help span:nth-child(n+3) { display: none; }
+  #credit .wide { display: none; }
+  #credit .narrow { display: inline; }
 }
