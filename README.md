@@ -1,10 +1,10 @@
 # Nighthawks
 
-[![Nighthawks: a free-roaming 3D scene after Edward Hopper](media/preview.webp)](https://claude.ai/artifact/KW7pu9eg7dpNcr3DaJN6QG)
+[![Nighthawks: a free-roaming 3D scene after Edward Hopper](media/preview.webp)](https://pagustafsson.github.io/nighthawks/)
 
 A free-roaming 3D scene after Edward Hopper's *Nighthawks* (1942), built with [three.js](https://threejs.org). The camera opens on Hopper's own viewpoint, reconstructed from the perspective of the painting, and the lighting follows his: the diner glows from within and throws its light onto the dark street. You can fly around the whole block and look at it from any angle, while the four figures move in a quiet 48-second loop.
 
-**[Try it live](https://claude.ai/artifact/KW7pu9eg7dpNcr3DaJN6QG)**
+**[Try it live](https://pagustafsson.github.io/nighthawks/)**
 
 Created by [@pagustafsson](https://x.com/pagustafsson) with Claude Opus 5.5 by Anthropic.
 
@@ -19,7 +19,7 @@ npm install
 npm run dev
 ```
 
-Then open the address Vite prints. `npm run build` writes a static site to `dist/`.
+Then open the address Vite prints. `npm run build` writes a static site to `dist/`. Every push to `main` is built and published to GitHub Pages by `.github/workflows/pages.yml`.
 
 ## Views
 
@@ -47,6 +47,8 @@ Then open the address Vite prints. `npm run build` writes a static site to `dist
 | G | Show the perspective lines used to reconstruct the painting |
 
 The **Copy link** button at the bottom copies the address of the page.
+
+The scene is also published as a [Claude artifact](https://claude.ai/artifact/KW7pu9eg7dpNcr3DaJN6QG).
 
 ## How it works
 
